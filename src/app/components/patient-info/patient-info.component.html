@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-md-3">
+    <p><b>Date of birth</b><br> {{patient.date | date: 'mediumDate'}}</p>
+    <p><b>Sex</b><br>{{patient.sex}}</p>
+    <p><b>Country</b><br>{{patient.country}}</p>
+    <p><b>State</b><br>{{patient.state}}</p>
+    <p><b>Address</b><br>{{patient.address}}</p>
+  </div>
+  <div class="col-md-9">
+    <div id="commentCard" class="card card-body mr-3">
+      <h5>Comments:</h5>
+      <div id="commentsSection">
+        <hr>
+        <a *ngFor="let comment of comments">
+          {{comment.date | date: 'd MMM, y'}}
+          <br> {{comment.comment}}
+          <i class="fa fa-trash float-right" (click)="deleteComment(comment.id)"></i>
+          <hr>
+        </a>
+      </div>
+      <form id="commentForm" class="form-group form-inline">
+        <input id="commentInput"
+               class="form-control"
+               type="text"
+               name="newComment"
+               [(ngModel)]="newComment.comment"
+               maxlength="255"
+        >
+        <button id="commentButton" type="submit" (click)="addComment();"><i class="fa fa-plus"></i></button>
+      </form>
+    </div>
+  </div>
+</div>

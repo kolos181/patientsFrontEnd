@@ -1,0 +1,8 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
+#overflowControl {
+  height: 88vh;
+  overflow: auto;
+}
