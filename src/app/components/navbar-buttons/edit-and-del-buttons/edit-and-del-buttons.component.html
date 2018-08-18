@@ -1,3 +1,6 @@
-<p>
-  edit-and-del-buttons works!
-</p>
+<li class="navbar-item">
+  <button class="btn btn-warning ml-2" [routerLink]="['/edit', patient.id]" skipLocationChange>Edit</button>
+</li>
+<li class="navbar-item">
+  <button class="btn btn-danger ml-2" (click)="deletePatient()">Delete</button>
+</li>

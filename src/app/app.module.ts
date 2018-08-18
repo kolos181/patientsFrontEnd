@@ -11,6 +11,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import { PatientEditComponent } from './components/patient-edit/patient-edit.component';
+import { EditAndDelButtonsComponent } from './components/navbar-buttons/edit-and-del-buttons/edit-and-del-buttons.component';
+import { CancelButtonComponent } from './components/navbar-buttons/cancel-button/cancel-button.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { PatientEditComponent } from './components/patient-edit/patient-edit.com
     PatientsComponent,
     PatientAddComponent,
     PatientInfoComponent,
-    PatientEditComponent
+    PatientEditComponent,
+    EditAndDelButtonsComponent,
+    CancelButtonComponent
   ],
   imports: [
     BrowserModule,

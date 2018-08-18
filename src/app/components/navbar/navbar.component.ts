@@ -4,7 +4,6 @@ import {SharedService} from '../../services/shared.service';
 import {Patient} from '../../models/Patient';
 import {Location} from '@angular/common';
 import {PatientService} from '../../services/patient.service';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -32,8 +31,6 @@ export class NavbarComponent implements OnInit {
 
   patientSearchQuery: string;
   userClickedOnSearch: boolean = false;
-
-  hideCancel = false;
 
   constructor(private sharedService: SharedService,
               private location: Location,
@@ -66,7 +63,6 @@ export class NavbarComponent implements OnInit {
       this.patientService.deletePatient(this.patient.id).subscribe(() => {
         window.location.href = '/';
         $(() => {
-          this.hideCancel = true;
           $('.list-group-item').removeClass('active');
           $('#patientName, #patientAge').prop('hidden', true);
           $('.btn-warning, .btn-danger, .btn-light').prop('hidden', true);

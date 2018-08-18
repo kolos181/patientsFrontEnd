@@ -39,7 +39,6 @@ export class PatientInfoComponent implements OnInit {
               private sharedService: SharedService) {
     //listening activated route as observable, in case of different :id path variable value
     this.route.url.subscribe(url => {
-
       this.patientService.getPatient(+url[0].path).subscribe(patient => {
         this.patient = patient;
         this.sharedService.patNavbarInfo(patient);
@@ -53,7 +52,6 @@ export class PatientInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-
     //hiding cancel button, revealing delete and edit
     $(() => {
       $('#patientName, #patientAge').prop('hidden', false);
