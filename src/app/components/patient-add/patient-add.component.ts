@@ -44,7 +44,7 @@ export class PatientAddComponent implements OnInit {
           editButton: null,
           delButton: null
         }
-      }, {skipLocationChange: true}]
+      }], {skipLocationChange: true}
     );
   }
 

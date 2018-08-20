@@ -40,14 +40,15 @@ export class PatientInfoComponent implements OnInit {
     //listening activated route as observable, in case of different :id path variable value
     this.route.url.subscribe(url => {
       //sending command to router to navigate edit and del named routers in navbar
-      this.router.navigate([{
-        outlets: {
-          editButton: ['edit'],
-          delButton: ['del'],
-          cancelButton: null
+      this.router.navigate([
+        {
+          outlets: {
+            editButton: ['edit'],
+            delButton: ['del'],
+            cancelButton: null
+          }
         }
-      },
-        {skipLocationChange: true}]);
+      ], {skipLocationChange: true});
 
       this.patientService.getPatient(+url[0].path).subscribe(patient => {
         this.patient = patient;

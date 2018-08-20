@@ -58,6 +58,7 @@ export class NavbarComponent implements OnInit {
     this.location.back();
   }
 
+  //soon to be deleted, keeping for information
   deletePatient() {
     if (confirm('Are you sure you want to delete patient?')) {
       this.patientService.deletePatient(this.patient.id).subscribe(() => {
