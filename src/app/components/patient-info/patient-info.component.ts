@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Patient} from '../../models/Patient';
 import {Comment} from '../../models/Comment';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {PatientService} from '../../services/patient.service';
 import {CommentService} from '../../services/comment.service';
 import {SharedService} from '../../services/shared.service';
-import $ from 'jquery';
 
 @Component({
   selector: 'app-patient-info',
@@ -33,12 +32,22 @@ export class PatientInfoComponent implements OnInit {
     date: null
   };
 
-  constructor(private route: ActivatedRoute,
+  constructor(private router: Router,
+              private route: ActivatedRoute,
               private patientService: PatientService,
               private commentService: CommentService,
               private sharedService: SharedService) {
     //listening activated route as observable, in case of different :id path variable value
     this.route.url.subscribe(url => {
+      //sending command to router to navigate edit and del named routers in navbar
+      this.router.navigate([{
+        outlets: {
+          editButton: ['edit'],
+          delButton: ['del'],
+          cancelButton: null
+        }
+      }], {skipLocationChange: true});
+
       this.patientService.getPatient(+url[0].path).subscribe(patient => {
         this.patient = patient;
         this.sharedService.patNavbarInfo(patient);
@@ -52,13 +61,7 @@ export class PatientInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    //hiding cancel button, revealing delete and edit
-    $(() => {
-      $('#patientName, #patientAge').prop('hidden', false);
-      $('.btn-light').prop('hidden', true);
-      $('.btn-danger').prop('hidden', false);
-      $('.btn-warning').prop('hidden', false);
-    });
+    // this.router.navigate([{outlets: {greenOutlet: ['green'], redOutlet: ['red']}}], {skipLocationChange: true});
   }
 
   addComment() {
@@ -72,7 +75,7 @@ export class PatientInfoComponent implements OnInit {
   }
 
   deleteComment(id: number) {
-    if (confirm("Are you sure you want to delete this comment?")) {
+    if (confirm('Are you sure you want to delete this comment?')) {
       this.commentService.deleteComment(id).subscribe(id => {
         const index = this.comments.indexOf(id, 0);
         this.comments.splice(index, 1);

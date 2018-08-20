@@ -38,14 +38,13 @@ export class PatientAddComponent implements OnInit {
 
   ngOnInit() {
     this.todaysDay = new Date().valueOf();
-    //remove unnecessary buttons from navbar and patient list selected
-      $(() => {
-        $('#patientName, #patientAge').prop('hidden', true);
-        $('.list-group-item').removeClass('active');
-        $('.btn-light').prop('hidden', false);
-        $('.btn-warning').prop('hidden', true);
-        $('.btn-danger').prop('hidden', true);
-      });
+    this.router.navigate([{
+      outlets: {
+        cancelButton: ['cancel'],
+        editButton: null,
+        delButton: null
+      }
+    }], {skipLocationChange: true});
   }
 
   addPatient() {

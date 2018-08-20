@@ -24,8 +24,11 @@
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
-      <router-outlet name="editAndDel"></router-outlet>
-      <router-outlet name="cancelButton"></router-outlet>
+      <li class="navbar-item">
+        <router-outlet name="cancelButton"></router-outlet>
+        <router-outlet name="delButton"></router-outlet>
+        <router-outlet name="editButton"></router-outlet>
+      </li>
     </ul>
   </div>
 </div>
