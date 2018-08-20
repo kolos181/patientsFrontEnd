@@ -39,12 +39,13 @@ export class PatientAddComponent implements OnInit {
   ngOnInit() {
     this.todaysDay = new Date().valueOf();
     this.router.navigate([{
-      outlets: {
-        cancelButton: ['cancel'],
-        editButton: null,
-        delButton: null
-      }
-    }], {skipLocationChange: true});
+        outlets: {
+          cancelButton: ['cancel'],
+          editButton: null,
+          delButton: null
+        }
+      }, {skipLocationChange: true}]
+    );
   }
 
   addPatient() {

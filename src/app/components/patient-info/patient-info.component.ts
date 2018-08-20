@@ -46,7 +46,8 @@ export class PatientInfoComponent implements OnInit {
           delButton: ['del'],
           cancelButton: null
         }
-      }], {skipLocationChange: true});
+      },
+        {skipLocationChange: true}]);
 
       this.patientService.getPatient(+url[0].path).subscribe(patient => {
         this.patient = patient;
