@@ -21,7 +21,6 @@ export class DelButtonComponent implements OnInit {
   ngOnInit() {
     this.sharedService.chosenPatient.subscribe(patient => {
       this.patientService.getPatient(patient.id).subscribe(patient => {
-        console.log(patient);
         this.patient = patient;
       });
     });

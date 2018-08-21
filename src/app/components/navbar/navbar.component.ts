@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import $ from 'jquery';
 import {SharedService} from '../../services/shared.service';
 import {Patient} from '../../models/Patient';
 import {Location} from '@angular/common';
@@ -39,7 +38,6 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.patientService.getPatients().subscribe(patients => {
       this.patients = patients;
     });
@@ -56,23 +54,6 @@ export class NavbarComponent implements OnInit {
 
   goBack() {
     this.location.back();
-  }
-
-  //soon to be deleted, keeping for information
-  deletePatient() {
-    if (confirm('Are you sure you want to delete patient?')) {
-      this.patientService.deletePatient(this.patient.id).subscribe(() => {
-        window.location.href = '/';
-        $(() => {
-          $('.list-group-item').removeClass('active');
-          $('#patientName, #patientAge').prop('hidden', true);
-          $('.btn-warning, .btn-danger, .btn-light').prop('hidden', true);
-        });
-        this.patientService.getPatients().subscribe(patients => {
-          this.sharedService.onUpdatedPatients(patients);
-        });
-      });
-    }
   }
 
   onEnteringSearchField() {

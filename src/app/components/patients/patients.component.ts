@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Patient} from '../../models/Patient';
 import {PatientService} from '../../services/patient.service';
-import $ from 'jquery';
 import {SharedService} from '../../services/shared.service';
 
 @Component({
@@ -13,7 +12,20 @@ import {SharedService} from '../../services/shared.service';
 export class PatientsComponent implements OnInit {
 
   patients: Patient[];
+  selectedPatient: Patient = {
+    name: '',
+    address: '',
+    state: '',
+    country: '',
+    sex: '',
+    date: new Date(),
+    id: null,
+    createdAt: null,
+    updatedAt: null
+  };
+
   noSuitableResults: boolean = false;
+
 
   constructor(private patientService: PatientService, private sharedService: SharedService) {
   }
@@ -37,17 +49,11 @@ export class PatientsComponent implements OnInit {
     });
   }
 
-  toggleActive() {
-    $(function () {
-      $('.list-group-item').click(function (e) {
-        $('.list-group-item').removeClass('active');
-        $(e.target).addClass('active');
-      });
-    });
-  }
-
   onNewPatient(patient: Patient) {
     this.patients.unshift(patient);
   }
 
+  onSelect(patient: Patient) {
+    this.selectedPatient = patient;
+  }
 }

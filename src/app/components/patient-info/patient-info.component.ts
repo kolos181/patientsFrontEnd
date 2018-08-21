@@ -63,7 +63,6 @@ export class PatientInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.router.navigate([{outlets: {greenOutlet: ['green'], redOutlet: ['red']}}], {skipLocationChange: true});
   }
 
   addComment() {

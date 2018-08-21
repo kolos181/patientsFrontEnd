@@ -6,3 +6,8 @@
   height: 88vh;
   overflow: auto;
 }
+
+.selected {
+  background-color: #007bff;
+  color: white;
+}

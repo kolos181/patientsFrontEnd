@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Patient} from '../../models/Patient';
 import {PatientService} from '../../services/patient.service';
 import {SharedService} from '../../services/shared.service';
@@ -23,7 +23,8 @@ export class PatientEditComponent implements OnInit {
   constructor(
     private patientService: PatientService,
     private sharedService: SharedService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private router: Router) {
   }
 
   ngOnInit() {
@@ -47,6 +48,8 @@ export class PatientEditComponent implements OnInit {
       this.patients.splice(this.patients.findIndex( p => p.id === patient.id), 1);
       this.patients.unshift(patient);
       this.sharedService.onUpdatedPatients(this.patients);
+      //go to edited patient page after successful edition
+      this.router.navigate( [this.patient.id]);
     });
   }
 
