@@ -1,0 +1,29 @@
+#commentInput {
+  width: calc(100% - 40px);
+}
+
+#commentButton {
+  font-size: 20px;
+  margin-left: 3px;
+  width: 37px;
+  float: right;
+  border-radius: 15%;
+}
+
+#commentCard {
+  height: 88vh;
+}
+
+#commentForm {
+  width: calc(100% - 30px);
+  position: absolute;
+  bottom: 0;
+}
+
+#commentsSection {
+  overflow: auto;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

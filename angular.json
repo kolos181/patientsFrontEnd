@@ -28,9 +28,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
+              "./node_modules/font-awesome/css/font-awesome.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/popper.js/dist/umd/popper.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.js",
+              "./node_modules/moment/min/moment.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -124,5 +131,8 @@
       }
     }
   },
-  "defaultProject": "patientsFrontEnd2021"
+  "defaultProject": "patientsFrontEnd2021",
+  "cli": {
+    "analytics": "b34933b8-d385-4c3e-b284-b461a3120353"
+  }
 }
